@@ -42,6 +42,15 @@ function App() {
       const consensusAccountsWrapper = new oasisRT.consensusAccounts.Wrapper(
         oasis.misc.fromHex(sapphireConfig.testnet.runtimeId),
       )
+      console.log(
+        'for validator shares to amount conversion',
+        parseGrpc(
+          await testnetNic.stakingAccount({
+            height: 0,
+            owner: oasis.staking.addressFromBech32('oasis1qqxxut9x74dutu587f9nj8787qz4dm0ueu05l88c'),
+          }),
+        ),
+      )
 
       const balance = await consensusAccountsWrapper.queryBalance().setArgs({ address: address }).query(testnetNic)
       const delegations = await consensusAccountsWrapper

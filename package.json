@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "biome check --write",
+    "build": "vite build",
+    "lint": "biome check --write && tsc",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +17,8 @@
     "@tanstack/react-query": "5.0.5",
     "bignumber.js": "^9.1.2",
     "buffer": "^6.0.3",
+    "cborg": "^4.2.3",
+    "ethers": "^6.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tweetnacl": "^1.0.3",

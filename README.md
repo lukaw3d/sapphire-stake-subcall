@@ -117,7 +117,7 @@ node
 
 okay, consensus.Delegate...
   tx format?
-    https://github.com/oasisprotocol/cli/blob/master/cmd/account/delegate.go#L68
+    https://github.com/oasisprotocol/cli/blob/5ee5605b0aaa61e5221f8646eee797a94e706179/cmd/account/delegate.go#L68
       To:     *toAddr,
       Amount: *amountBaseUnits,
     https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/tools/gen_runtime_vectors/main.go#L215
@@ -201,8 +201,10 @@ okay, consensus.Delegate...
         })
 
     what parses the abi encoded thing?
-      https://github.com/oasisprotocol/oasis-sdk/blob/main/runtime-sdk/src/modules/consensus_accounts/mod.rs#L464
-      https://github.com/oasisprotocol/oasis-sdk/blob/main/runtime-sdk/src/modules/consensus_accounts/types.rs#L29-L33
+      https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/modules/evm/src/precompile/subcall.rs#L48-L54
+      https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/modules/evm/src/precompile/subcall.rs#L80
+      https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/src/modules/consensus_accounts/mod.rs#L464
+      https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/src/modules/consensus_accounts/types.rs#L29-L33
 
   console.log('consensus.Delegate', coder.encode(["string", "bytes"], ["consensus.Delegate", cborg.encode({
     amount: [oasis.quantity.fromBigInt(100n * (10n**18n)), oasisRT.token.NATIVE_DENOMINATION],
@@ -262,18 +264,18 @@ but is it real?
       }))
       // Map(0) {}
 
-    https://github.com/oasisprotocol/oasis-sdk/blob/main/client-sdk/ts-web/rt/src/consensus_accounts.ts#L39
+    https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/client-sdk/ts-web/rt/src/consensus_accounts.ts#L39
     https://github.com/search?q=repo%3Aoasisprotocol%2Foasis-sdk%20path%3A%2F%5Eclient-sdk%5C%2Fts-web%5C%2F%2F%20delegations&type=code
       no runtime grpc methods for this?
 
     Matevžs oasis cli can stake from paratimes. does it display balance?
-      https://github.com/oasisprotocol/cli/blob/master/cmd/account/delegate.go#L73
+      https://github.com/oasisprotocol/cli/blob/5ee5605b0aaa61e5221f8646eee797a94e706179/cmd/account/delegate.go#L73
       https://github.com/oasisprotocol/cli/blob/738e56dc4ce1242657d9a559068ce7c9c0e0fc89/cmd/account/show/show.go#L213
       yes. using grpc
       https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/client-sdk/go/modules/consensusaccounts/consensus_accounts.go#L23-L34
 
       a lot of these are missing from js sdk
-      https://github.com/oasisprotocol/oasis-sdk/blob/main/client-sdk/ts-web/rt/src/consensus_accounts.ts#L15-L20
+      https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/client-sdk/ts-web/rt/src/consensus_accounts.ts#L15-L20
       can i call this.query('consensus.Delegations') without fixing it and implementing types?
 
     node a.mjs
@@ -313,7 +315,7 @@ okay undelegate?
   probably failed
 
 
-  https://github.com/oasisprotocol/cli/blob/master/cmd/account/undelegate.go#L71
+  https://github.com/oasisprotocol/cli/blob/5ee5605b0aaa61e5221f8646eee797a94e706179/cmd/account/undelegate.go#L71
   shares doesnt have denomination
 
   console.log('consensus.Undelegate 2', coder.encode(["string", "bytes"], ["consensus.Undelegate", cborg.encode({

@@ -42,15 +42,6 @@ function App() {
       const consensusAccountsWrapper = new oasisRT.consensusAccounts.Wrapper(
         oasis.misc.fromHex(sapphireConfig.testnet.runtimeId),
       )
-      console.log(
-        'for validator shares to amount conversion',
-        parseGrpc(
-          await testnetNic.stakingAccount({
-            height: 0,
-            owner: oasis.staking.addressFromBech32('oasis1qqxxut9x74dutu587f9nj8787qz4dm0ueu05l88c'),
-          }),
-        ),
-      )
 
       const balance = await consensusAccountsWrapper.queryBalance().setArgs({ address: address }).query(testnetNic)
       const delegations = await consensusAccountsWrapper
@@ -62,10 +53,30 @@ function App() {
         .setArgs({ to: address })
         .query(testnetNic)
 
+      const sharesValues: {[k: string]: object} = {}
+      for (const d of delegations) {
+        sharesValues[oasis.staking.addressToBech32(d.to) + ' stakingAccount.escrow.active'] = parseGrpc(
+          await testnetNic.stakingAccount({
+            height: 0,
+            owner: d.to,
+          }),
+        ).escrow.active
+      }
+
+      for (const d of undelegations) {
+        sharesValues[oasis.staking.addressToBech32(d.from) + ' stakingAccount.escrow.debonding'] = parseGrpc(
+          await testnetNic.stakingAccount({
+            height: 0,
+            owner: d.from,
+          }),
+        ).escrow.debonding
+      }
+
       return parseGrpc({
         balance,
         delegations,
         undelegations,
+        sharesValues,
       })
     },
     refetchInterval: 6000,

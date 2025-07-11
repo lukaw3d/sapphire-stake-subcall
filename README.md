@@ -207,6 +207,8 @@ okay, consensus.Delegate...
       https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/src/modules/consensus_accounts/types.rs#L29-L33
 
       https://github.com/oasisprotocol/oasis-sdk/blob/3a786c6ed5589fe73062a4b6c585670d31ba22d6/runtime-sdk/modules/evm/src/precompile/mod.rs#L137
+      # > (1, 1, 3) => subcall::call_subcall(handle, self.backend),
+      # 0x0100000000000000000000000000000000000103
 
   console.log('consensus.Delegate', coder.encode(["string", "bytes"], ["consensus.Delegate", cborg.encode({
     amount: [oasis.quantity.fromBigInt(100n * (10n**18n)), oasisRT.token.NATIVE_DENOMINATION],

@@ -206,6 +206,8 @@ okay, consensus.Delegate...
       https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/src/modules/consensus_accounts/mod.rs#L464
       https://github.com/oasisprotocol/oasis-sdk/blob/22b89224fbce558c6cb1088d9b30e552a61ba64f/runtime-sdk/src/modules/consensus_accounts/types.rs#L29-L33
 
+      https://github.com/oasisprotocol/oasis-sdk/blob/3a786c6ed5589fe73062a4b6c585670d31ba22d6/runtime-sdk/modules/evm/src/precompile/mod.rs#L137
+
   console.log('consensus.Delegate', coder.encode(["string", "bytes"], ["consensus.Delegate", cborg.encode({
     amount: [oasis.quantity.fromBigInt(100n * (10n**18n)), oasisRT.token.NATIVE_DENOMINATION],
     to: oasis.staking.addressFromBech32('oasis1qqxxut9x74dutu587f9nj8787qz4dm0ueu05l88c'), // Princess Stake on testnet
